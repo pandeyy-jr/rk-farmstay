@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RK Farmstay — Karjat
 
-## Getting Started
+A premium, cinematic brochure + booking-enquiry website for **RK Farmstay**,
+a private farmstay in Urja · Bhoirwadi, Karjat (Raigad, Maharashtra 410201).
 
-First, run the development server:
+Built with **Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 ·
+Motion · Lucide icons**. Fully static prerender, responsive desktop + mobile
+designs, accessible lightbox gallery, WhatsApp booking-enquiry flow.
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm run build    # production check (tsc + eslint + static prerender)
+npm start
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Path | What lives there |
+| --- | --- |
+| `app/` | Routes (`/`, `/privacy`, `/api/reviews`, sitemap, robots, 404) |
+| `components/` | Section + UI components (hero, intro, gallery, booking, …) |
+| `lib/site.ts` | **Central business settings** — phone numbers, links, address, Google rating snapshot |
+| `lib/images.ts` | Typed image manifest (all photography referenced from here) |
+| `public/images/farmstay/` | Property photographs + hero, optimized WebP |
+| `public/videos/` · `public/audio/` | Reserved for owner-supplied intro video / ambience audio |
+| `qa/` | Playwright verification scripts (screenshots excluded from git) |
 
-## Learn More
+## Key flows
 
-To learn more about Next.js, take a look at the following resources:
+- **Booking enquiry** → validated form opens WhatsApp (`wa.me`) with the
+  enquiry pre-typed to the preferred booking number in `lib/site.ts`.
+- **Reviews** → `GET /api/reviews` serves live Google data when
+  `GOOGLE_PLACES_API_KEY` + `GOOGLE_PLACE_ID` are set, otherwise falls back
+  to the owner-supplied snapshot. No secrets ever reach the client.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Booking/WhatsApp: +91 77758 07655 · Call: +91 82373 92121
+- Instagram: https://www.instagram.com/rk_farmstay_karjat/
