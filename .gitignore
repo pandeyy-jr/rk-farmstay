@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# qa verification screenshots (multi-MB playwright captures, regenerable)
+qa/*.png
